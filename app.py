@@ -1,3 +1,4 @@
+import requests
 import json
 import os
 import openai
@@ -7,8 +8,11 @@ def main():
     # Set the OpenAI API key
     openai.api_key = os.getenv('OPENAI_API_KEY')
 
-    # Read the clues from crossword.json
-    clues = read_clues()
+    # Get the new crossword data
+    data = get_crossword_data()
+
+    # Read the cluses 
+    clues = read_clues(data)
 
     # for each clue, generate a prompt to send to OpenAI
     prompts = generate_prompts(clues)
@@ -24,11 +28,19 @@ def main():
         print(f"Prompt: {prompts[i]}")
         print(f"Answer: {answers[i]}")
     
-# Read the clues from crossword.json
+
+# Get the JSON crossword data from the New York Times at https://www.nytimes.com/svc/crosswords/v6/puzzle/mini.json
+def get_crossword_data():
+    # Request the data at https://www.nytimes.com/svc/crosswords/v6/puzzle/mini.json
+    response = requests.get("https://www.nytimes.com/svc/crosswords/v6/puzzle/mini.json")
+    # Get the JSON data from the response
+    data = response.json()
+    # return the data
+    return data
+
+# Read the clues from the JSON data
 # And calculate the length of the answer for each clue based on its number of cells
-def read_clues():
-    with open('crossword.json', 'r') as f:
-        data = json.load(f)
+def read_clues(data):
     # for each clue in the data make an object with the clue text, the count of cells, the label, and the direction of the clue
     clues = []
     # get the clues from the data
