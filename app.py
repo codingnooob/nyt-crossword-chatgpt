@@ -23,10 +23,14 @@ def main():
     # for each prompt, send it to OpenAI and get the answer
     answers = get_answers(prompts)
 
-    # Print the answers along with their prompts
-    for i in range(len(prompts)):
-        print(f"Prompt: {prompts[i]}")
-        print(f"Answer: {answers[i]}")
+    # correlate the answers with the clues
+    for i in range(len(clues)):
+        clues[i]['answer'] = answers[i]
+    # print the clues along with the answer, grouping by direction
+    print_clues(clues)
+    
+
+    
     
 
 # Get the JSON crossword data from the New York Times at https://www.nytimes.com/svc/crosswords/v6/puzzle/mini.json
@@ -90,6 +94,19 @@ def get_answers(prompts):
         # remove whitespace from the answers
         answers = [answer.strip() for answer in answers]
     return answers
+
+# print the clues along with the answer, grouping by direction
+def print_clues(clues):
+    # sort the clues by direction
+    clues.sort(key=lambda clue: clue['direction'])
+    # print each direction and the clues for that direction
+    for direction in ['Across', 'Down']:
+        print(direction)
+        for clue in clues:
+            if clue['direction'] == direction:
+                print(f"{clue['label']}. {clue['text']}")
+                print(f"Answer: {clue['answer']}")
+                print()
 
 # Run the main function
 if __name__ == "__main__":
