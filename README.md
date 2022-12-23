@@ -41,6 +41,7 @@ This script requires the following Python packages:
 
 Here is an example of what the output of the `app.py` script might look like:
 
+```
 Across:
 1. Fast plane: JET
 3. "___ on a Grecian Urn": ODE
@@ -53,6 +54,7 @@ Down:
 3. Certain test taker: EGG
 6. "Jaws" actor: ROY
 8. Classic arcade game: PACMAN
+```
 
 Please note that the answers shown above are just an example and may not necessarily be the correct answers for the actual crossword puzzle.
 
