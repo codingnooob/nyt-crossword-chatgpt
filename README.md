@@ -16,7 +16,7 @@ This script is designed to generate crossword puzzle answers for clues from the 
 
 To use this script, run the following command in your terminal:
 
-`python app.py``
+`python app.py`
 
 The script will first retrieve crossword data from the New York Times website, then generate prompts for each clue based on the clue text and the number of letters in the answer. It will then send these prompts to OpenAI and retrieve the generated answers. Finally, it will print out the clues along with the answers, grouped by direction (across or down).
 
