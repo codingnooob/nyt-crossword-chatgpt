@@ -91,9 +91,8 @@ def print_clues(clues):
         print(direction)
         for clue in clues:
             if clue['direction'] == direction:
-                print(f"{clue['label']}. {clue['text']}")
-                print(f"Answer: {clue['answer']}")
-                print()
+                # Print in this format: 1. Fast plane: JET
+                print(f"{clue['label']}. {clue['text']}: {clue['answer']}")
 
 # Run the main function
 if __name__ == "__main__":
