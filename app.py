@@ -1,5 +1,4 @@
 import requests
-import json
 import os
 import openai
 
@@ -17,9 +16,6 @@ def main():
     # for each clue, generate a prompt to send to OpenAI
     prompts = generate_prompts(clues)
 
-    # Print the prompts
-    print_prompts(prompts)
-
     # for each prompt, send it to OpenAI and get the answer
     answers = get_answers(prompts)
 
@@ -28,10 +24,6 @@ def main():
         clues[i]['answer'] = answers[i]
     # print the clues along with the answer, grouping by direction
     print_clues(clues)
-    
-
-    
-    
 
 # Get the JSON crossword data from the New York Times at https://www.nytimes.com/svc/crosswords/v6/puzzle/mini.json
 def get_crossword_data():
@@ -70,11 +62,6 @@ def generate_prompts(clues):
         # add the prompt to the prompts array
         prompts.append(prompt)
     return prompts
-
-# Print the prompts
-def print_prompts(prompts):
-    for prompt in prompts:
-        print(prompt)
 
 # for each prompt, send it to OpenAI and get the answer
 def get_answers(prompts):
