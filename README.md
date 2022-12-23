@@ -37,6 +37,25 @@ This script requires the following Python packages:
 - os: used to access environment variables
 - openai: used to access the OpenAI API
 
+## Example Output
+
+Here is an example of what the output of the `app.py` script might look like:
+
+Across:
+1. Fast plane: JET
+3. "___ on a Grecian Urn": ODE
+4. Ointment ingredient: ALOE
+5. Picket line crosser: SCAB
+7. Exclamation of surprise: OHO
+
+Down:
+2. Actress ___ Pataky: ELSA
+3. Certain test taker: EGG
+6. "Jaws" actor: ROY
+8. Classic arcade game: PACMAN
+
+Please note that the answers shown above are just an example and may not necessarily be the correct answers for the actual crossword puzzle.
+
 ## Disclaimer
 
 Please note that this experiment is for educational and entertainment purposes only. The New York Times Crossword is a copyrighted work and it is not permitted to distribute solutions or unauthorized copies of the puzzle.
