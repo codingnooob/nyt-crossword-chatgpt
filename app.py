@@ -68,16 +68,15 @@ def get_answers(prompts):
     answers = []
     for prompt in prompts:
         # send the prompt to OpenAI
-        response = openai.Completion.create(
-            # engine="text-davinci-003"
-            engine="text-davinci-003",
-            prompt=prompt,
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": prompt}],
             max_tokens=1024,
             temperature=0.5,
             frequency_penalty=0,
             presence_penalty=0
         )
-        answers.append(response.choices[0].text)
+        answers.append(response.choices[0].message['content'])
         # remove whitespace from the answers
         answers = [answer.strip() for answer in answers]
     return answers
